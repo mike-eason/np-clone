@@ -372,10 +372,8 @@ class GameHelper {
 
   playerHasLowestTechLevel (game, techKey, player) {
     const levels = [...new Set(game.galaxy.players
-      .filter(p => p.research != null)
-      .map(p => {
-        return p.research[techKey].level
-      }))]
+      .filter(p => p.research != null && p.research[techKey] != null)
+      .map(p => p.research[techKey].level))]
 
     // If all players have the same level then nobody has the lowest.
     if (levels.length === 1) {
@@ -389,10 +387,8 @@ class GameHelper {
 
   playerHasHighestTechLevel (game, techKey, player) {
     const levels = [...new Set(game.galaxy.players
-      .filter(p => p.research != null)
-      .map(p => {
-        return p.research[techKey].level
-      }))]
+      .filter(p => p.research != null && p.research[techKey] != null)
+      .map(p => p.research[techKey].level))]
 
     // If all players have the same level then nobody has the highest.
     if (levels.length === 1) {

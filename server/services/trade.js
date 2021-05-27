@@ -4,7 +4,7 @@ const ValidationError = require('../errors/validation');
 
 module.exports = class TradeService extends EventEmitter {
 
-    constructor(gameModel, userService, playerService, ledgerService, achievementService, reputationService) {
+    constructor(gameModel, userService, playerService, ledgerService, achievementService, reputationService, gameService) {
         super();
         
         this.gameModel = gameModel;
@@ -13,6 +13,7 @@ module.exports = class TradeService extends EventEmitter {
         this.ledgerService = ledgerService;
         this.achievementService = achievementService;
         this.reputationService = reputationService;
+        this.gameService = gameService;
     }
 
     // TODO: Specialist token trading
@@ -325,9 +326,10 @@ module.exports = class TradeService extends EventEmitter {
             let techFromPlayer = fromPlayer.research[techKey];
             let techToPlayer = toPlayer.research[techKey];
 
-            let techLevel = techFromPlayer.level
+            let techLevel = techFromPlayer.level;
+            let techLevelTo = this.gameService.isDarkModeExtra(game) ? 0 : techToPlayer.level; // If ultra dark mode, then return ALL techs
 
-            while (techLevel > techToPlayer.level) {
+            while (techLevel > techLevelTo) {
                 tradeTechs.push({
                     name: techKey,
                     level: techLevel,

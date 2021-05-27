@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr v-if="playerResearchLevel">
     <td class="row-icon"><i class="fas" :class="iconClass"></i></td>
     <td>{{ title }}</td>
     <td class="text-right" :class="playerStyle">
@@ -27,10 +27,16 @@ export default {
   },
   computed: {
     playerResearchLevel () {
-      return this.player.research[this.research].level;
+      let tech = this.player.research[this.research]
+
+      if (tech == null) {
+        return null
+      } else {
+        return tech.level;
+      }
     },
     userPlayerResearchLevel () {
-      return this.userPlayer.research[this.research].level;
+      return this.userPlayer.research[this.research].level
     },
     playerStyle () {
       if ((this.userPlayer && this.userPlayer == this.player) || !this.userPlayer) {

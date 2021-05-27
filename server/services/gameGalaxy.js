@@ -349,38 +349,7 @@ module.exports = class GameGalaxyService {
                 reputation = this.reputationService.getReputation(p, player);
             }
 
-            let research = {
-                scanning: { 
-                    level: p.research.scanning.level
-                },
-                hyperspace: { 
-                    level: p.research.hyperspace.level
-                },
-                terraforming: { 
-                    level: p.research.terraforming.level
-                },
-                experimentation: { 
-                    level: p.research.experimentation.level
-                },
-                weapons: { 
-                    level: p.research.weapons.level
-                },
-                banking: { 
-                    level: p.research.banking.level
-                },
-                manufacturing: { 
-                    level: p.research.manufacturing.level
-                },
-                specialists: { 
-                    level: p.research.specialists.level
-                }
-            };
-
-            // In ultra dark mode games, research is visible 
-            // only to players who are within scanning range.
-            if (!isFinished && isDarkModeExtra && !p.isInScanningRange) {
-                research = null;
-            }
+            let research = this._maskPlayerResearch(p, isFinished, isDarkModeExtra);
 
             // Return a subset of the user, key info only.
             return {
@@ -418,6 +387,52 @@ module.exports = class GameGalaxyService {
 
     _clearPlayerCarriers(doc) {
         doc.galaxy.carriers = [];
+    }
+
+    _maskPlayerResearch(player, isFinished, isDarkModeExtra) {
+        let research = {
+            scanning: { 
+                level: player.research.scanning.level
+            },
+            hyperspace: { 
+                level: player.research.hyperspace.level
+            },
+            terraforming: { 
+                level: player.research.terraforming.level
+            },
+            experimentation: { 
+                level: player.research.experimentation.level
+            },
+            weapons: { 
+                level: player.research.weapons.level
+            },
+            banking: { 
+                level: player.research.banking.level
+            },
+            manufacturing: { 
+                level: player.research.manufacturing.level
+            },
+            specialists: { 
+                level: player.research.specialists.level
+            }
+        };
+
+        // In ultra dark mode games, research is visible 
+        // only to players who are within scanning range.
+        if (!isFinished && isDarkModeExtra) {
+            if (player.isInScanningRange) {
+                research = {
+                    weapons: { 
+                        level: player.research.weapons.level
+                    }
+                };
+            }
+            else {
+                research = null;
+            }
+        }
+
+        return research;
     }
 
     async _maskGalaxy(game, player, isHistorical, tick) {

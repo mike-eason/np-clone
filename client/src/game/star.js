@@ -525,6 +525,10 @@ class Star extends EventEmitter {
     if (!player) { return }
 
     // TODO: Use the game helper instead?
+    if (player.research.scanning == null) {
+      return
+    }
+
     let techLevel = player.research.scanning.level
 
     if (this.data.specialist && this.data.specialist.modifiers.local) {
@@ -557,6 +561,10 @@ class Star extends EventEmitter {
     let player = this._getStarPlayer()
 
     if (!player) { return }
+
+    if (player.research.hyperspace == null) {
+      return
+    }
 
     // TODO: Use the game helper instead?
     let techLevel = player.research.hyperspace.level

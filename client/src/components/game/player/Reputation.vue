@@ -7,7 +7,7 @@
             Your reputation with this player is <span :class="{'text-danger':player.reputation.score < 0,'text-success':player.reputation.score > 0}">{{player.reputation.score}}</span>.
             <br/>
             Send credits (<span class="text-warning">${{creditsRequired}}</span>)
-            <span v-if="isSpecialistsCurrencyCreditsSpecialists">specialist tokens (<span class="text-warning">{{creditsSpecialistsRequired}}</span>)</span> or technology to increase your reputation.
+            <span v-if="isSpecialistsCurrencyCreditsSpecialists && player.research.specialists">specialist tokens (<span class="text-warning">{{creditsSpecialistsRequired}}</span>)</span> or technology to increase your reputation.
           </i>
         </small>
       </p>

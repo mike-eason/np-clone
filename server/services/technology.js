@@ -46,14 +46,14 @@ module.exports = class TechnologyService {
 
     getPlayerEffectiveTechnologyLevels(game, player, sanitize = true) {
         let techs = {
-            scanning: player.research.scanning.level,
-            hyperspace: player.research.hyperspace.level,
-            terraforming: player.research.terraforming.level,
-            experimentation: player.research.experimentation.level,
-            weapons: player.research.weapons.level,
-            banking: player.research.banking.level,
-            manufacturing: player.research.manufacturing.level,
-            specialists: player.research.specialists.level
+            scanning: player.research.scanning?.level,
+            hyperspace: player.research.hyperspace?.level,
+            terraforming: player.research.terraforming?.level,
+            experimentation: player.research.experimentation?.level,
+            weapons: player.research.weapons?.level,
+            banking: player.research.banking?.level,
+            manufacturing: player.research.manufacturing?.level,
+            specialists: player.research.specialists?.level
         };
 
         return techs;
