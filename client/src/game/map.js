@@ -524,6 +524,7 @@ class Map extends EventEmitter {
     this.gameContainer.viewport.moveCenter(empireCenter.x, empireCenter.y)
 
     let zoomPercent = this.gameContainer.getViewportZoomPercentage()
+    zoomPercent *= window.devicePixelRatio
 
     this.refreshZoom(zoomPercent)
   }
@@ -619,7 +620,9 @@ class Map extends EventEmitter {
 
     let viewportCenter = this.gameContainer.viewport.center
 
-    this.zoomPercent = (this.gameContainer.viewport.screenWidth/viewportWidth) * 100
+    let zoomPercent = (this.gameContainer.viewport.screenWidth/viewportWidth) * 100
+    zoomPercent *= window.devicePixelRatio
+    this.zoomPercent = zoomPercent
 
     let viewportData = {
       center: viewportCenter,
@@ -668,7 +671,7 @@ class Map extends EventEmitter {
     }
 
     this.pathManager.onTick(this.zoomPercent, this.gameContainer.viewport, zoomChanging)
-    this.background.onTick(deltaTime, viewportData)
+    this.background.onTick(this.zoomPercent, deltaTime, viewportData)
     this.playerNames.onTick(this.zoomPercent, zoomChanging)
 
     this.lastZoomPercent = this.zoomPercent

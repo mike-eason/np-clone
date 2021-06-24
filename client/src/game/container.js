@@ -248,7 +248,7 @@ class GameContainer {
     let viewportWidth = this.viewport.right - this.viewport.left
     let viewportPercent = (this.viewport.screenWidth / viewportWidth) * 100
 
-    return viewportPercent
+    return viewportPercent * window.devicePixelRatio
   }
 
   onTick (deltaTime) {
