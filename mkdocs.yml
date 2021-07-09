@@ -1,9 +1,15 @@
 site_name: Solaris Wiki
 
-docs_dir: wiki/
-
 theme: readthedocs
 
 extra_css: [
     _styles/style.css
 ]
+
+repo_url: 'https://github.com/mike-eason/solaris'
+
+nav:
+  - Welcome: 'index.md'
+  - 'overview.md'
+  - 'infrastructure.md'
+  - 'technologies.md'

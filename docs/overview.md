@@ -1,4 +1,4 @@
-# The Solaris Wiki
+# Overview
 
 ## Introduction
 
@@ -167,16 +167,8 @@ again, so it will not grant a speed boost to incoming Carriers.
 
 ## Infrastructure
 
-There are 3 types of infrastructure that can be built at stars:
-
- - **Economy** - Increases income at production, each point of Economy earns 10
-   credits on the production tick.
- - **Industry** - Increases ship production rate.
- - **Science** - Increases research speed. Each point of Science will generate
-   one research point per tick for the chosen current technology that is being
-   researched.
-
-![The menu to build infrastructure on a star](img/infrastructure-menu.png)
+_Note: this section has partially moved to the [Infrastructure](infrastructure/)
+section._
 
 When you select a star its Hyperspace Range and Scanning Range will become
 visible. Hyperspace Range is displayed as a ridged ring centered on the star and
@@ -273,26 +265,7 @@ The types of technologies are as follows:
 
 ![The Research menu](img/research-menu.png)
 
- - **Scanning** - Improves the visible area star a star can see.
-   The higher your scanning, the further you can see.
- - **Hyperspace Range** - Improves the distance a carrier can travel in between
-   each waypoint.
- - **Terraforming** - Improves the natural resources at Stars to make
-   infrastructure upgrades cheaper.
- - **Experimentation** - Grants a 50 bonus points per level to a random
-   technology each production.
- - **Weapons** - Improves the amount of enemy carriers each friendly carrier
-   destroys in combat. Each carrier destroys enemy carriers exactly equal to the
-   local weapons level.
- - **Banking** - Earns 75 extra credits every production. If experimental
-   banking is enabled in game settings, you get additional extra credits based
-   from your economy level.
- - **Manufacturing** - Increases ship production rate on all stars. The exact
-   formula is a star produces `(X*(Y+5))/T` ships per tick, where `X` is the
-   star's industry, `Y` is the star's manufacturing level, and `T` is the number
-   of ticks in every production cycle.
- - **Specialists** - Increases the number of specialist tokens awarded at the
-   end of a galactic cycle, these are used to hire specialists.
+_This has been moved to the [Technologies](technologies/) section._
 
 
 ## Turn Based Games
